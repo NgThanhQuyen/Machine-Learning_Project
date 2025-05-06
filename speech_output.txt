@@ -1,0 +1,24 @@
+
+--- Ghi âm lúc: 2025-05-06 19:15:04 ---
+Nội dung nói: Xin chào Tôi là Nguyễn Thanh Quyền
+Kết quả nhận dạng ML:
+- HMM tự cài đặt: 0
+- HMM thư viện: [1]
+- SVM: [1]
+----------------------------------------
+
+--- Ghi âm lúc: 2025-05-06 19:15:24 ---
+Nội dung nói: đang học đại học
+Kết quả nhận dạng ML:
+- HMM tự cài đặt: 0
+- HMM thư viện: [1]
+- SVM: [1]
+----------------------------------------
+
+--- Ghi âm lúc: 2025-05-06 19:15:37 ---
+Nội dung nói: ở thành phố Hồ Chí Minh
+Kết quả nhận dạng ML:
+- HMM tự cài đặt: 0
+- HMM thư viện: [1]
+- SVM: [1]
+----------------------------------------
