@@ -1,126 +1,133 @@
 # Dự án Nhận dạng Giọng nói sử dụng Machine Learning
 
 ## Giới thiệu
-Dự án này là một hệ thống nhận dạng giọng nói tích hợp nhiều phương pháp Machine Learning để so sánh hiệu suất. Hệ thống có khả năng ghi âm giọng nói thời gian thực, chuyển đổi thành văn bản và phân loại bằng các mô hình ML.
+Dự án này là một hệ thống nhận dạng giọng nói tích hợp nhiều phương pháp Machine Learning để phân loại và nhận dạng tiếng nói. Hệ thống có khả năng ghi âm giọng nói thời gian thực, chuyển đổi thành văn bản và phân loại bằng các mô hình ML.
 
 ### Các tính năng chính
-- Ghi âm giọng nói trực tiếp từ microphone
-- Chuyển đổi giọng nói thành văn bản sử dụng Google Speech API
+- Ghi âm giọng nói trực tiếp từ microphone (tối đa 10 giây)
+- Chuyển đổi giọng nói thành văn bản sử dụng Google Speech Recognition (hỗ trợ tiếng Việt)
 - Trích xuất đặc trưng MFCC từ tín hiệu âm thanh
-- So sánh 3 mô hình học máy khác nhau
-- Trực quan hóa kết quả bằng biểu đồ
+- So sánh hiệu suất của 3 mô hình học máy khác nhau
+- Trực quan hóa kết quả với nhiều độ đo (Accuracy, F1-score, Precision, Recall)
+- Lưu trữ kết quả và biểu đồ theo thời gian
 
 ## Cấu trúc dự án
 
 ### 1. main.py
 File chính điều phối toàn bộ luồng hoạt động của hệ thống:
-- Khởi tạo và huấn luyện các mô hình ML
-- Xử lý luồng ghi âm realtime
-- Tích hợp các module xử lý âm thanh và nhận dạng
-- Quản lý quá trình lưu trữ và hiển thị kết quả
+- Ghi âm và xử lý âm thanh realtime
+- Tạo dữ liệu huấn luyện từ đặc trưng MFCC
+- Huấn luyện và đánh giá các mô hình ML
+- Quản lý quá trình lưu trữ kết quả
 
 ### 2. models.py
 Định nghĩa các mô hình học máy:
 - CustomHMM: Mô hình Hidden Markov tự cài đặt
-  + Sử dụng thuật toán Baum-Welch để huấn luyện
-  + Thuật toán Viterbi cho dự đoán
-- HMM từ thư viện hmmlearn: Triển khai chuẩn của HMM
-- SVM: Sử dụng cho phân loại nhị phân
-- ModelFactory: Quản lý việc tạo và khởi tạo các mô hình
+  + Thuật toán Baum-Welch cho huấn luyện
+  + Dự đoán dựa trên likelihood
+- HMM từ thư viện hmmlearn
+  + Sử dụng GaussianHMM với 2 trạng thái
+  + Tham số được khởi tạo tối ưu
+- SVM từ scikit-learn
+  + Kernel RBF cho phân loại nhị phân
+  + Tối ưu cho bài toán phân loại âm thanh
 
 ### 3. audio_utils.py
 Xử lý các tác vụ liên quan đến âm thanh:
-- Ghi âm từ microphone (thời lượng 2 giây, tần số lấy mẫu 16kHz)
-- Chuyển đổi giọng nói thành văn bản (hỗ trợ tiếng Việt)
-- Trích xuất 13 đặc trưng MFCC từ tín hiệu âm thanh
-- Xử lý và lưu trữ file WAV tạm thời
+- Ghi âm từ microphone (sử dụng sounddevice)
+- Xử lý và chuẩn hóa tín hiệu âm thanh
+- Chuyển đổi giọng nói thành văn bản (Google Speech Recognition)
+- Trích xuất và chuẩn hóa đặc trưng MFCC
 
 ### 4. data_utils.py
-Xử lý và quản lý dữ liệu:
-- Tạo và chuẩn bị dữ liệu huấn luyện
-- Tính toán các độ đo đánh giá:
+Xử lý và đánh giá dữ liệu:
+- Đánh giá mô hình với nhiều độ đo:
   + Accuracy (độ chính xác)
   + F1-score (điểm F1)
-- Lưu kết quả nhận dạng vào file với timestamp
+  + Precision (độ chính xác dương tính)
+  + Recall (độ nhạy)
+- Lưu kết quả nhận dạng với timestamp
 
 ### 5. visualization.py
 Trực quan hóa kết quả:
-- Vẽ biểu đồ so sánh song song các mô hình
-- Hiển thị 2 độ đo: accuracy và F1-score
-- Tự động lưu biểu đồ dưới dạng file PNG
+- Vẽ biểu đồ so sánh các mô hình
+- Hiển thị 4 độ đo trên các biểu đồ con
+- Tự động lưu biểu đồ với timestamp
+
+## Cấu trúc thư mục
+```
+├── main.py              # File chính điều khiển chương trình
+├── models.py            # Định nghĩa các mô hình ML
+├── audio_utils.py       # Xử lý âm thanh và trích xuất đặc trưng
+├── data_utils.py        # Xử lý dữ liệu và đánh giá
+├── visualization.py     # Trực quan hóa kết quả
+├── requirements.txt     # Danh sách thư viện cần thiết
+├── speech_output.txt    # File lưu kết quả nhận dạng
+└── plots/              # Thư mục chứa biểu đồ kết quả
+    └── results_*.png   # Các file biểu đồ theo timestamp
+```
 
 ## Yêu cầu hệ thống
 
 ### Môi trường
 - Python 3.6+
 - Microphone hoạt động
-- Kết nối Internet (cho Google Speech API)
+- Kết nối Internet (cho Google Speech Recognition)
 
 ### Thư viện Python
 Xem chi tiết trong file requirements.txt:
-- numpy, scipy: Xử lý số liệu và tính toán
+- numpy, scipy: Xử lý số liệu
 - scikit-learn, hmmlearn: Các mô hình ML
-- librosa, sounddevice: Xử lý âm thanh
+- sounddevice: Ghi âm realtime
 - python-speech-features: Trích xuất MFCC
 - SpeechRecognition: API nhận dạng giọng nói
-- matplotlib, pandas: Trực quan hóa và xử lý dữ liệu
+- matplotlib: Trực quan hóa dữ liệu
+- keyboard: Xử lý sự kiện bàn phím
 
 ## Cài đặt và Sử dụng
 
 ### 1. Cài đặt môi trường
-```bash
+```powershell
 # Tạo môi trường ảo (khuyến nghị)
 python -m venv venv
-source venv/bin/activate  # Linux/Mac
-venv\\Scripts\\activate   # Windows
+.\venv\Scripts\activate
 
 # Cài đặt thư viện
 pip install -r requirements.txt
 ```
 
 ### 2. Chạy chương trình
-```bash
+```powershell
 python main.py
 ```
 
 ### 3. Hướng dẫn sử dụng
 1. Khởi động chương trình
-2. Nhấn Enter để bắt đầu ghi âm
-3. Nói trong 2 giây (đợi thông báo kết thúc)
-4. Xem kết quả:
+2. Nhấn Enter để bắt đầu
+3. Nhấn và giữ phím SPACE để ghi âm
+4. Thả phím SPACE để kết thúc ghi âm
+5. Xem kết quả:
    - Văn bản được nhận dạng
-   - Dự đoán của 3 mô hình
-   - Biểu đồ so sánh (nếu có)
-5. Chọn:
+   - Kết quả dự đoán của các mô hình
+   - Biểu đồ đánh giá hiệu suất
+6. Chọn:
    - 'y' để tiếp tục ghi âm mới
    - 'n' để kết thúc chương trình
 
-## Kết quả và File xuất ra
+## Kết quả đầu ra
 
 ### 1. speech_output.txt
-- Lưu lịch sử các lần ghi âm
-- Định dạng cho mỗi bản ghi:
-  + Thời gian ghi âm
-  + Nội dung nhận dạng được
-  + Kết quả dự đoán của 3 mô hình
-    - HMM tự cài đặt:
-        + 0: Không nhận dạng được âm thanh(không có tiếng nói)
-        + 1: Nhận dạng được âm thanh(có tiếng nói)
-    - HMM thư viện:
-        + [0]: Không nhận dạng được âm thanh(không có tiếng nói)
-        + [1]: Nhận dạng được âm thanh(có tiếng nói)
-    - SVM:
-        + [0]: Không nhận dạng được âm thanh(không có tiếng nói)
-        + [1]: Nhận dạng được âm thanh(có tiếng nói)
+- Lưu kết quả mỗi lần ghi âm với:
+  + Thời gian ghi âm (timestamp)
+  + Văn bản nhận dạng được
+  + Kết quả dự đoán của 3 mô hình:
+    - HMM tự cài đặt: 0 (không có tiếng nói) / 1 (có tiếng nói)
+    - HMM thư viện: 0 (không có tiếng nói) / 1 (có tiếng nói)
+    - SVM: 0 (không có tiếng nói) / 1 (có tiếng nói)
 
-### 2. results.png
-- Biểu đồ so sánh hiệu suất
-- Hai biểu đồ con:
-  + Độ chính xác (Accuracy)
-  + Điểm F1 (F1-score)
-
-## Ghi chú
-- Mô hình HMM tự cài đặt đơn giản hóa một số bước tính toán
-- Google Speech API yêu cầu kết nối Internet
-- File WAV tạm thời sẽ tự động bị xóa sau mỗi lần ghi âm
-- Dữ liệu huấn luyện được tạo ngẫu nhiên cho mục đích demo
+### 2. Biểu đồ kết quả (plots/results_*.png)
+- So sánh hiệu suất các mô hình với 4 độ đo:
+  + Accuracy: Tỷ lệ dự đoán đúng
+  + F1-score: Trung bình điều hòa của precision và recall
+  + Precision: Tỷ lệ dự đoán đúng trong các dự đoán dương tính
+  + Recall: Tỷ lệ phát hiện đúng các trường hợp dương tính thực

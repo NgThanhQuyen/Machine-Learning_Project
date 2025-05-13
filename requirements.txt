@@ -1,11 +1,22 @@
-numpy
-scipy
-scikit-learn
-librosa
-matplotlib
-sounddevice
-python-speech-features
-pandas
-hmmlearn
-SpeechRecognition
-keyboard
+# Các thư viện cần thiết cho dự án
+
+# Xử lý số liệu và tính toán khoa học
+numpy          # Thư viện tính toán số học, xử lý mảng đa chiều
+scipy          # Thư viện cho tính toán khoa học, tối ưu hóa, xử lý tín hiệu
+
+# Machine Learning
+scikit-learn   # Thư viện học máy, cung cấp các thuật toán ML như SVM
+hmmlearn       # Thư viện triển khai mô hình Hidden Markov (HMM)
+
+# Xử lý âm thanh
+librosa        # Thư viện phân tích và xử lý âm thanh
+sounddevice    # Thư viện ghi và phát âm thanh realtime
+python-speech-features  # Trích xuất đặc trưng từ tín hiệu âm thanh (MFCC)
+SpeechRecognition      # Chuyển đổi giọng nói thành văn bản (sử dụng Google API)
+
+# Trực quan hóa và xử lý dữ liệu
+matplotlib     # Thư viện vẽ biểu đồ và trực quan hóa dữ liệu
+pandas         # Thư viện xử lý và phân tích dữ liệu
+
+# Giao diện người dùng
+keyboard       # Thư viện theo dõi và xử lý sự kiện bàn phím

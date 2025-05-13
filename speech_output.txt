@@ -1,24 +1,48 @@
 
---- Ghi âm lúc: 2025-05-06 19:15:04 ---
-Nội dung nói: Xin chào Tôi là Nguyễn Thanh Quyền
+--- Ghi âm lúc: 2025-05-13_18-17-43 ---
+Nội dung nói: alo alo 1 2 3 4 5 6 7 8 9 10 alo alo
 Kết quả nhận dạng ML:
-- HMM tự cài đặt: 0
-- HMM thư viện: [1]
-- SVM: [1]
+- HMM tự cài đặt: Trạng thái 0 (Không có tiếng nói)
+- HMM thư viện: Trạng thái [0] (Không có tiếng nói)
+- SVM: Trạng thái [1] (Có tiếng nói)
 ----------------------------------------
 
---- Ghi âm lúc: 2025-05-06 19:15:24 ---
-Nội dung nói: đang học đại học
+--- Ghi âm lúc: 2025-05-13_18-19-04 ---
+Nội dung nói: Tôi là Nguyễn Thanh Huyền
 Kết quả nhận dạng ML:
-- HMM tự cài đặt: 0
-- HMM thư viện: [1]
-- SVM: [1]
+- HMM tự cài đặt: Trạng thái 0 (Không có tiếng nói)
+- HMM thư viện: Trạng thái [1] (Có tiếng nói)
+- SVM: Trạng thái [0] (Không có tiếng nói)
 ----------------------------------------
 
---- Ghi âm lúc: 2025-05-06 19:15:37 ---
-Nội dung nói: ở thành phố Hồ Chí Minh
+--- Ghi âm lúc: 2025-05-13_18-19-25 ---
+Nội dung nói: Hello everyone
 Kết quả nhận dạng ML:
-- HMM tự cài đặt: 0
-- HMM thư viện: [1]
-- SVM: [1]
+- HMM tự cài đặt: Trạng thái 0 (Không có tiếng nói)
+- HMM thư viện: Trạng thái [1] (Có tiếng nói)
+- SVM: Trạng thái [1] (Có tiếng nói)
+----------------------------------------
+
+--- Ghi âm lúc: 2025-05-13_19-43-26 ---
+Nội dung nói: đang sống ở thành phố Hồ Chí Minh
+Kết quả nhận dạng ML:
+- HMM tự cài đặt: Trạng thái 0 (Không có tiếng nói)
+- HMM thư viện: Trạng thái [0] (Không có tiếng nói)
+- SVM: Trạng thái [1] (Có tiếng nói)
+----------------------------------------
+
+--- Ghi âm lúc: 2025-05-13_19-43-58 ---
+Nội dung nói: Tôi ở Bến Tre
+Kết quả nhận dạng ML:
+- HMM tự cài đặt: Trạng thái 0 (Không có tiếng nói)
+- HMM thư viện: Trạng thái [0] (Không có tiếng nói)
+- SVM: Trạng thái [0] (Không có tiếng nói)
+----------------------------------------
+
+--- Ghi âm lúc: 2025-05-13_19-45-38 ---
+Nội dung nói: alo 1 2 alo hello hello
+Kết quả nhận dạng ML:
+- HMM tự cài đặt: Trạng thái 0 (Không có tiếng nói)
+- HMM thư viện: Trạng thái [0] (Không có tiếng nói)
+- SVM: Trạng thái [0] (Không có tiếng nói)
 ----------------------------------------
