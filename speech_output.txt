@@ -46,3 +46,27 @@ Kết quả nhận dạng ML:
 - HMM thư viện: Trạng thái [0] (Không có tiếng nói)
 - SVM: Trạng thái [0] (Không có tiếng nói)
 ----------------------------------------
+
+--- Ghi âm lúc: 2025-05-20_22-42-36 ---
+Nội dung nói: Hello How are you
+Kết quả nhận dạng ML:
+- HMM tự cài đặt: Trạng thái 0 (Không có tiếng nói)
+- HMM thư viện: Trạng thái [0] (Không có tiếng nói)
+- SVM: Trạng thái [1] (Có tiếng nói)
+----------------------------------------
+
+--- Ghi âm lúc: 2025-05-20_22-43-20 ---
+Nội dung nói: Bạn ăn cơm chưa
+Kết quả nhận dạng ML:
+- HMM tự cài đặt: Trạng thái 0 (Không có tiếng nói)
+- HMM thư viện: Trạng thái [0] (Không có tiếng nói)
+- SVM: Trạng thái [1] (Có tiếng nói)
+----------------------------------------
+
+--- Ghi âm lúc: 2025-05-20_23-16-26 ---
+Nội dung nói: test mic
+Kết quả nhận dạng ML:
+- HMM tự cài đặt: Trạng thái 0 (Không có tiếng nói)
+- HMM thư viện: Trạng thái [1] (Có tiếng nói)
+- SVM: Trạng thái [0] (Không có tiếng nói)
+----------------------------------------

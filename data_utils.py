@@ -25,11 +25,15 @@ def evaluate_models(y_true, y_pred1, y_pred2, y_pred3):
     """
     Đánh giá hiệu suất của các mô hình bằng nhiều độ đo khác nhau.
     
-    Các độ đo được sử dụng:
+    Các độ đo được sử dụng:    
     1. Accuracy (Độ chính xác):
        - Tỷ lệ dự đoán đúng trên tổng số mẫu
        - Công thức: (TP + TN) / (TP + TN + FP + FN)
-    
+       Trong đó:
+       + TP (True Positive): Số mẫu "có tiếng nói" được dự đoán đúng là "có tiếng nói"
+       + TN (True Negative): Số mẫu "không có tiếng nói" được dự đoán đúng là "không có tiếng nói"
+       + FP (False Positive): Số mẫu "không có tiếng nói" bị dự đoán sai là "có tiếng nói"
+       + FN (False Negative): Số mẫu "có tiếng nói" bị dự đoán sai là "không có tiếng nói"
     2. F1-score (Điểm F1):
        - Trung bình điều hòa của precision và recall
        - Phù hợp với dữ liệu mất cân bằng
